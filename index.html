@@ -1,0 +1,783 @@
+<html>
+<head>
+<style>
+html {background: url(grass.png)}
+
+#hero {
+  background: url(hero.png) 0 0;
+  width: 34px;
+  height: 40px;
+  position: absolute;
+  left: 1000px;
+  top: 200px;
+  z-index: 800;
+}
+
+  
+#backgroundovertop {
+  background: url(grass.png);
+  width: 500px;
+  height: 750px;
+  position: fixed; 
+  transform: translate(-50%, -50%); 
+  left: 50%; 
+  top: 27%;
+  z-index: 900;
+  
+
+}
+#background {
+  background: url(grass.png);
+  width: 500px;
+  height: 750px;
+  position: fixed; 
+  transform: translate(-50%, -50%); 
+  left: 50%; 
+  top: 27%;
+  z-index: 800;
+  border-style: none;
+  border-color: black;
+  border-width: 5px;
+
+  
+}
+#backgroundendscreen {
+  background: url(grass.png);
+  width: 500px;
+  height: 750px;
+  position: fixed; 
+  transform: translate(-50%, -50%); 
+  left: 50%; 
+  top: 27%;
+  z-index: 850;
+  
+}
+#backgroundhighscore {
+  background: url(grass.png);
+  width: 500px;
+  height: 750px;
+  position: fixed; 
+  transform: translate(-50%, -50%); 
+  left: 50%; 
+  top: 27%;
+  z-index: 870;
+  
+}
+.bullet {
+  background: #FFD700;
+  width: 2px;
+  height: 5px;
+  position: absolute;
+  left: 1000px;
+  top: 200px;
+  z-index: 800;
+}
+.zombie {
+  background: url(zombie1.png) 0 0;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  z-index: 800;
+}
+#score {
+  color: black;
+  font-size: 18pt;
+  position: absolute; 
+  transform: translate(-50%, -50%); 
+  left: 40.5%; 
+  top: 3%;
+  z-index: 800;
+}
+#lives {
+  color: black;
+  font-size: 18pt;
+  position: absolute; 
+  transform: translate(-50%, -50%); 
+  left: 40.28%; 
+  top: 7%;
+  z-index: 800;
+}
+#gameover {
+  color: #ff0000;
+  font-size: 20px;
+  position: absolute;
+  left: 40.28%; 
+  top: 20%;
+  visibility: hidden;
+  z-index: 900;
+}
+button{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	cursor: pointer;
+	width: 60px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 800;
+	transform: translate(-50%, -50%); 
+	left: 61%; 
+	top: 3%;
+}
+.startb{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	cursor: pointer;
+	width: 100px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 1000;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 30%;
+	font-size: 25px;
+}
+.highscoreb{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	cursor: pointer;
+	width: 170px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 1000;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 38%;
+	font-size: 25px;
+}
+.savescoreb{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	width: 170px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 860;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 30%;
+	font-size: 25px;
+
+}
+.savescoreb[disabled]:hover {
+	cursor: not-allowed;
+
+}
+
+.menubutton{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	cursor: pointer;
+	width: 145px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 873;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 38%;
+	font-size: 25px;
+}
+.highscoremenubutton{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #333;
+	text-align: center;
+	cursor: pointer;
+	width: 145px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 871;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 47%;
+	font-size: 25px;
+}
+.finalscore{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: black;
+	text-align: center;
+	width: 50px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 860;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 10%;
+	font-size: 50px;
+}
+.highscores2:first-child{
+	color: black;
+	z-index: 871;
+	font-size: 20px;
+	margin-bottom: 0.5rem;
+	position: absolute;
+    transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 19%;
+	height: 10px;
+	
+}
+.highscores2:nth-child(2){
+	color: black;
+	z-index: 871;
+	font-size: 20px;
+	margin-bottom: 0.5rem;
+	position: absolute;
+    transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 23%;
+	height: 10px;
+	z-index: 871;
+}
+.highscores2:nth-child(3){
+	color: black;
+	z-index: 871;
+	font-size: 20px;
+	margin-bottom: 0.5rem;
+	position: absolute;
+    transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 27%;
+	height: 10px;
+	z-index: 871;
+}
+.highscores2:nth-child(4){
+	color: black;
+	z-index: 871;
+	font-size: 20px;
+	margin-bottom: 0.5rem;
+	position: absolute;
+    transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 31%;
+	height: 10px;
+	z-index: 871;
+}
+.highscores2:nth-child(5){
+	color: black;
+	z-index: 871;
+	font-size: 20px;
+	margin-bottom: 0.5rem;
+	position: absolute;
+    transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 35%;
+	height: 10px;
+	z-index: 871;
+}
+
+.highscores{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: black;
+	text-align: center;
+	width: 300px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 871;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 7%;
+	font-size: 40px;
+}
+
+.instructions{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: black;
+	text-align: center;
+	width: 300px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 901;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 47.2%;
+	font-size: 20px;
+}
+
+.inputbox{
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: black;
+	text-align: center;
+	width: 125px;
+	border-radius: 10px;
+	position: absolute;
+	z-index: 860;
+	transform: translate(-50%, -50%); 
+	left: 50%; 
+	top: 22%;
+	font-size: 20px;
+}
+
+#titlelogo {
+  background: url(ZOMBI.png);
+  width: 375px;
+  height: 80px;
+  position: fixed; 
+  transform: translate(-50%, -50%); 
+  left: 50.3%; 
+  top: 18%;
+  z-index: 901;
+  
+</style>
+</head>
+<body>
+
+<div id="titlelogo"></div>
+<div id="background"></div>
+<div id="hero"></div>
+
+<!-- Defines how many bullets can be on the screen at once-->
+<div class="bullet" id="bullet0"></div>
+<div class="bullet" id="bullet1"></div>
+<div class="bullet" id="bullet2"></div>
+<div class="bullet" id="bullet3"></div>
+<div class="bullet" id="bullet4"></div>
+<div class="bullet" id="bullet5"></div>
+<div class="bullet" id="bullet6"></div>
+<div class="bullet" id="bullet7"></div>
+
+<div id="score"></div>
+<div id="lives"></div>
+
+
+
+
+<a href="index.html">
+<button name="menu_button" type="button">Menu</button>
+<button id='menubutton' type="button" class="menubutton" href="index.html">Menu</button>
+<button id='highscoremenubutton' type="button" class="highscoremenubutton" href="index.html">Menu</button>
+</a>
+
+<button id='startb' type="button" class="startb" onclick="gamestarted()"  >Play</button>
+<button id='highscoreb' type="button" class="highscoreb" onclick="highscorescreen()">High Scores</button>
+<input id='inputbox' type="text" name="username" placeholder="Name" class="inputbox"/>
+<button id='savescoreb' type="button" class="savescoreb" onclick="saveHighScore(event)" disabled >Save Score</button>
+
+<h1 id='finalscore' class="finalscore" >0</h1>
+<h1 id='highscores' class="highscores">High Scores</h1>
+<h1 id='instructions' class="instructions">Use ARROW KEYS to move around and press SPACE to shoot Don't let the zombies get past!</h1>
+
+<ul id="highScoresList" class="highScoresList"></ul>
+
+<div id="backgroundovertop"></div>
+<div id="backgroundendscreen"></div>
+<div id="backgroundhighscore"></div>
+
+
+
+
+<script>
+
+<!-- Gunshot audio -->
+var singleshot = new Audio("singleshot4.mp3");
+singleshot.volume = 0.01;
+
+var gamestart = false;
+
+<!-- Movement variables -->
+var LEFT_KEY = 37;
+var UP_KEY = 38;
+var RIGHT_KEY = 39;
+var DOWN_KEY = 40;
+var SPACE_KEY = 32;
+var HERO_MOVEMENT = 8;
+
+var lastLoopRun = 0;
+var score = 0;
+var iterations = 0;
+var lives = 5;
+var finalscorevalue = 0;
+
+var controller = new Object();
+var zombies = new Array();
+
+<!-- Gamestarted() runs when play button is pressed -->
+function gamestarted(){
+	startb.style.visibility = 'hidden';
+	finalscore.style.visibility = 'hidden';
+	savescoreb.style.visibility = 'hidden';
+	menubutton.style.visibility = 'hidden';
+	highscoreb.style.visibility = 'hidden';
+	highscores.style.visibility = 'hidden';
+	titlelogo.style.visibility = 'hidden';
+	background.style.border = 'solid';
+	highscoremenubutton.style.visibility = 'hidden';
+	backgroundovertop.style.display = "none";
+	backgroundendscreen.style.display = "none";
+	backgroundhighscore.style.display = "none";
+	instructions.style.display ="none";
+	inputbox.style.visibility = 'hidden';
+	loop();
+}
+
+<!-- Endscreen() runs when player dies or runs out of lives -->
+function endscreen(){
+	background.style.border = 'none';
+	const inputbox = document.getElementById('inputbox');
+	const savescoreb = document.getElementById('savescoreb');
+	const finalscore = document.getElementById('finalscore');
+	
+	<!-- Gets JSON from local storage -->
+	const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+	
+	<!-- Max amount of scores in the JSON -->
+	const MAX_HIGH_SCORES = 5;
+
+	
+	
+	finalscore.innerText = finalscorevalue;
+	
+	<!-- Only allows save score to be pressed if something is entered -->
+	inputbox.addEventListener('keyup', () => {
+    savescoreb.disabled = !inputbox.value;
+	});
+	
+saveHighScore = (e) => {
+    e.preventDefault();
+	
+	<!-- Stores score and name in format -->
+    const score = {
+        score: finalscorevalue,
+        name: inputbox.value,
+    };
+	<!-- Pushes the score to the JSON and sorts it correctly and if ensures no more then 5 are in the list -->
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(5);
+
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+	window.location.assign("index.html")
+	
+	console.log(highScores);
+};
+
+}
+
+<!-- Displays high score screen when high scores is pressed -->
+function highscorescreen(){
+	startb.style.visibility = 'hidden';
+	finalscore.style.visibility = 'hidden';
+	savescoreb.style.visibility = 'hidden';
+	menubutton.style.visibility = 'hidden';
+	highscoreb.style.visibility = 'hidden';
+	titlelogo.style.visibility = 'hidden';
+	backgroundovertop.style.display = "none";
+	backgroundendscreen.style.display = "none";
+	inputbox.style.visibility = 'hidden';
+	instructions.style.display ="none";
+	
+	<!-- Gets the high scores and puts them in the list -->
+	const highScoresList = document.getElementById('highScoresList');
+	const highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+	
+	highScoresList.innerHTML = highScores
+		.map(score => {
+			return `<li class="highscores2">${score.name} - ${score.score}</li>`;
+		})
+		.join("");
+}
+
+<!-- Sprite creation function -->
+function createSprite(element, x, y, w, h) {
+  var result = new Object();
+  result.element = element;
+  result.x = x;
+  result.y = y;
+  result.w = w;
+  result.h = h;
+  return result;
+}
+
+<!-- Movement function -->
+function toggleKey(keyCode, isPressed) {
+  if (keyCode == LEFT_KEY) {
+    controller.left = isPressed;
+  }
+  if (keyCode == RIGHT_KEY) {
+    controller.right = isPressed;
+  }
+  if (keyCode == DOWN_KEY) {
+    controller.down = isPressed;
+  }
+  if (keyCode == UP_KEY) {
+    controller.up = isPressed;
+  }
+  if (keyCode == SPACE_KEY) {
+    controller.space = isPressed;
+  }  
+}
+
+function intersects(a, b) {
+  return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+}
+
+<!-- Ensures that the zombies and hero stay within a certain area -->
+function ensureBounds(sprite, ignoreY) {
+  if (sprite.x < 710) {
+    sprite.x = 710;
+  }
+  if (!ignoreY && sprite.y < 15) {
+    sprite.y = 15;
+  }
+  if (sprite.x + sprite.w > 1190) {
+    sprite.x = 1190 - sprite.w;
+  }
+  if (!ignoreY && sprite.y + sprite.h > 600) {
+    sprite.y = 600 - sprite.h;
+  }
+}
+
+function setPosition(sprite) {
+  var e = document.getElementById(sprite.element);
+  e.style.left = sprite.x + 'px';
+  e.style.top = sprite.y + 'px';
+}
+
+<!-- Handles each control for moving around and pressing space -->
+function handleControls() {
+  if (controller.up) {
+    hero.y -= HERO_MOVEMENT;
+  }
+  if (controller.down) {
+    hero.y += HERO_MOVEMENT;
+  }
+  if (controller.left) {
+    hero.x -= HERO_MOVEMENT;
+  }
+  if (controller.right) {
+    hero.x += HERO_MOVEMENT;
+  }
+  if (controller.space) {
+	
+    var bullet = getFireablebullet();
+    if (bullet) {
+			bullet.x = hero.x + 24.7;
+			bullet.y = hero.y - 5;
+			singleshot.load()
+			singleshot.play()
+			
+		}
+  }
+  ensureBounds(hero);
+}
+
+<!-- Gets fireable bullet -->
+function getFireablebullet() {
+  var result = null;
+  for (var i = 0; i < bullets.length; i++) {
+    if (bullets[i].y <= -120) {
+      result = bullets[i];
+    }
+  }
+  return result;
+}
+
+<!-- Removes bullet is zombie is hit -->
+function getIntersectingbullet(zombie) {
+  var result = null;
+  for (var i = 0; i < bullets.length; i++) {
+    if (intersects(bullets[i], zombie)) {
+      result = bullets[i];
+      break;
+    }
+  }
+  return result;
+}
+
+<!-- Checks collisions with zombies, the hero and the bottom to see if lives or zombies should be removed and if the game should end -->
+function checkCollisions() {
+  for (var i = 0; i < zombies.length; i++) {
+    var bullet = getIntersectingbullet(zombies[i]);
+    if (bullet) {
+      var element = document.getElementById(zombies[i].element);
+      element.style.visibility = 'hidden';
+      element.parentNode.removeChild(element);
+      zombies.splice(i, 1);
+      i--;
+      bullet.y = -bullet.h;
+      score += 1;
+    } else if (intersects(hero, zombies[i])) {
+      gameOver();
+	  
+    } else if (zombies[i].y + zombies[i].h >= 630) {
+      var element = document.getElementById(zombies[i].element);
+      element.style.visibility = 'hidden';
+      element.parentNode.removeChild(element);
+      zombies.splice(i, 1);
+	  lives -= 1;
+      i--;
+    } if (lives == 0){
+	finalscore == score;
+	gameOver();
+	
+	} if (lives < 0){
+	lives = 0;
+	}
+  }
+}
+
+<!-- Gameover function occurs when lives = 0 or the user is hit by a zombie -->
+function gameOver() { 
+  singleshot.volume = 0;
+  var element = document.getElementById(hero.element);
+  element.style.visibility = 'hidden';
+  savescoreb.style.visibility = 'visible';
+  backgroundendscreen.style.display = "block";
+  menubutton.style.visibility = 'visible';
+  finalscore.style.visibility = 'visible';
+  inputbox.style.visibility = 'visible';
+  finalscorevalue = score;
+  endscreen();
+  
+	
+  
+  
+}
+
+<!-- Shows sprites and displays score and lives -->
+function showSprites() {
+  setPosition(hero);
+  for (var i = 0; i < bullets.length; i++) {
+    setPosition(bullets[i]);
+  }
+  for (var i = 0; i < zombies.length; i++) {
+    setPosition(zombies[i]);
+  }
+  var scoreElement = document.getElementById('score');
+  scoreElement.innerHTML = 'SCORE: ' + score;
+  
+  var livesElement = document.getElementById('lives');
+  livesElement.innerHTML = 'LIVES: ' + lives;
+}
+
+<!-- Updates positions of zombies and bullets -->
+function updatePositions() {
+  for (var i = 0; i < zombies.length; i++) {
+    zombies[i].y += 4;
+    ensureBounds(zombies[i], true);
+  }
+  for (var i = 0; i < bullets.length; i++) {
+    bullets[i].y -= 12;
+  }
+}
+
+<!-- Add zombie (lower interval = more spawning) -->
+function addzombie() {
+  var interval = 50;  
+  if (iterations > 125) {
+    interval = 45;
+  }
+  if (iterations > 250) {
+    interval = 40;
+  }
+  if (iterations > 375) {
+    interval = 35;
+  }
+  if (iterations > 500) {
+    interval = 30;
+  }
+  if (iterations > 625) {
+    interval = 25;
+  }
+  if (iterations > 750) {
+    interval = 20;
+  }
+  
+  
+<!-- Spawn zombie random location between 450px and 720px -->
+
+  if (getRandom(interval) == 0) {
+    var elementName = 'zombie' + getRandom(10000000);
+    var zombie = createSprite(elementName, getRandom2(450), -20, 35, 35)
+    
+    var element = document.createElement('div');
+    element.id = zombie.element;
+    element.className = 'zombie'; 
+    document.children[0].appendChild(element);
+    
+    zombies[zombies.length] = zombie;
+  }
+}
+
+function getRandom(maxSize) {
+  return parseInt(Math.random() * maxSize);
+}
+function getRandom2(maxSize) {
+  return parseInt(Math.random() * maxSize) + 720
+}
+
+<!-- Game loop -->
+function loop() {
+  if (new Date().getTime() - lastLoopRun > 40) {
+    updatePositions();
+    handleControls();
+    checkCollisions();
+    
+    addzombie();
+    showSprites();
+    
+    lastLoopRun = new Date().getTime();
+    iterations++;
+  }
+  setTimeout('loop();', 2);
+  
+}
+
+document.onkeydown = function(evt) {
+  toggleKey(evt.keyCode, true);
+};
+
+document.onkeyup = function(evt) {
+  toggleKey(evt.keyCode, false);
+};
+
+<!-- Hero and bullet initial positioning -->
+var hero = createSprite('hero', 950, 600, 20, 20);
+var bullets = new Array();
+for (var i = 0; i < 8; i++) {
+  bullets[i] = createSprite('bullet' + i, 0, -120, 2, 50);
+}
+
+
+
+</script>
+</body>
+</html>
